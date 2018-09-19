@@ -40,6 +40,15 @@ app.use(cors());
 //         next();
 //     }
 // })
+// added for debug
+if (process.env.NODE_ENV === "production") {
+  require("@google/cloud-trace").start();
+}
+
+if (process.env.GCLOUD_PROJECT) {
+  require("@google/cloud-debug").start();
+}
+//------------------------------------
 var port = process.env.port || 8080;
 // var router = express.Router();
 
